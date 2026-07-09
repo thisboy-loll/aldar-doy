@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title> Приглашение на Хылбык дой</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f5efe8;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(215, 180, 140, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(190, 150, 110, 0.2) 0%, transparent 50%),
+        repeating-linear-gradient(45deg, rgba(200, 170, 140, 0.03) 0px, rgba(200, 170, 140, 0.03) 4px, transparent 4px, transparent 8px);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .invitation-card {
+      max-width: 680px;
+      width: 100%;
+      background: rgba(255, 250, 245, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 56px 56px 48px 48px;
+      box-shadow: 0 40px 80px -24px rgba(60, 40, 20, 0.3),
+                  0 8px 24px rgba(0,0,0,0.04),
+                  inset 0 1px 0 rgba(255, 245, 235, 0.7);
+      border: 1px solid rgba(255, 240, 225, 0.6);
+      padding: 36px 30px 42px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    /* декоративный орнаментальный фон */
+    .invitation-card::before {
+      content: '?';
+      position: absolute;
+      top: -30px;
+      right: -10px;
+      font-size: 120px;
+      opacity: 0.04;
+      transform: rotate(15deg);
+      pointer-events: none;
+      font-family: serif;
+    }
+
+    .invitation-card::after {
+      content: '? ? ?';
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 28px;
+      letter-spacing: 12px;
+      opacity: 0.05;
+      pointer-events: none;
+      color: #8b6f50;
+    }
+
+    /* верхняя линия-украшение */
+    .ornament-top {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: #b39478;
+      font-size: 18px;
+      letter-spacing: 6px;
+      opacity: 0.5;
+    }
+
+    .ornament-top span {
+      display: inline-block;
+    }
+
+    .invitation-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    /* заголовок */
+    .invitation-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      color: #a58366;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      opacity: 0.8;
+    }
+
+    .main-headline {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 3.2rem;
+      line-height: 1.1;
+      color: #3f2c1e;
+      margin-bottom: 6px;
+      letter-spacing: 2px;
+    }
+
+    .main-headline small {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #7a5f48;
+      display: block;
+      margin-top: 2px;
+      letter-spacing: 6px;
+    }
+
+    .divider {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c9b09b, transparent);
+      margin: 18px auto 22px;
+      border-radius: 4px;
+    }
+
+    /* имя и описание */
+    .honoree {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: #402d1e;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+    }
+
+    .honoree-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #7f6650;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    /* детали мероприятия */
+    .event-details {
+      background: rgba(245, 235, 225, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 40px;
+      padding: 22px 20px 20px;
+      margin: 22px 0 28px;
+      border: 1px solid rgba(220, 200, 180, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 1.05rem;
+      color: #3e2e20;
+    }
+
+    .detail-row .emoji {
+      font-size: 1.6rem;
+      line-height: 1;
+      opacity: 0.7;
+    }
+
+    .detail-row .label {
+      font-weight: 500;
+      color: #7a624b;
+      letter-spacing: 0.5px;
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .detail-row .value {
+      font-weight: 500;
+      background: rgba(255, 248, 240, 0.6);
+      padding: 4px 18px;
+      border-radius: 40px;
+      border: 1px solid rgba(200, 175, 155, 0.2);
+      backdrop-filter: blur(2px);
+      font-size: 0.98rem;
+    }
+
+    .detail-row .value strong {
+      font-weight: 600;
+      color: #2d1f13;
+    }
+
+    .address-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      background: rgba(255, 248, 240, 0.4);
+      padding: 6px 16px;
+      border-radius: 40px;
+      border: 1px dashed rgba(180, 155, 130, 0.3);
+    }
+
+    .address-line .emoji {
+      font-size: 1.3rem;
+    }
+
+    /* кнопка RSVP */
+    .rsvp-btn {
+      background: #b48a6c;
+      border: none;
+      border-radius: 60px;
+      padding: 16px 32px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: #fefcf8;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 6px 18px rgba(150, 110, 80, 0.25);
+      width: 100%;
+      max-width: 300px;
+      margin: 12px auto 0;
+      display: block;
+      border: 1px solid rgba(255, 235, 215, 0.3);
+      backdrop-filter: blur(4px);
+    }
+
+    .rsvp-btn:hover {
+      background: #9f7a5e;
+      transform: scale(0.98);
+      box-shadow: 0 4px 12px rgba(130, 90, 60, 0.3);
+    }
+
+    .rsvp-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* футер */
+    .footer-note {
+      margin-top: 28px;
+      font-size: 0.85rem;
+      color: #a48770;
+      letter-spacing: 2px;
+      border-top: 1px solid rgba(200, 180, 160, 0.2);
+      padding-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-note span {
+      opacity: 0.7;
+    }
+
+    .footer-note .heart {
+      color: #c79a7a;
+    }
+
+    /* адаптив */
+    @media (max-width: 540px) {
+      .invitation-card {
+        padding: 24px 18px 32px;
+        border-radius: 40px;
+      }
+      .main-headline {
+        font-size: 2.4rem;
+      }
+      .main-headline small {
+        font-size: 1.3rem;
+      }
+      .honoree {
+        font-size: 2.0rem;
+      }
+      .detail-row {
+        font-size: 0.95rem;
+        gap: 8px;
+      }
+      .detail-row .label {
+        min-width: 40px;
+        text-align: left;
+      }
+      .rsvp-btn {
+        font-size: 1rem;
+        padding: 14px 20px;
+        max-width: 100%;
+      }
+      .ornament-top {
+        font-size: 14px;
+        letter-spacing: 4px;
+      }
+      .address-line {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .main-headline {
+        font-size: 2rem;
+      }
+      .honoree {
+        font-size: 1.7rem;
+      }
+      .detail-row .value {
+        padding: 4px 12px;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* анимация появления */
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(16px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .invitation-content {
+      animation: fadeUp 0.8s ease-out forwards;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="invitation-card">
+    <!-- орнаментальные штрихи -->
+    <div class="ornament-top">
+      <span>?</span>
+      <span>?</span>
+      <span>?</span>
+      <span>?</span>
+      <span>?</span>
+    </div>
+
+    <div class="invitation-content">
+      <div class="invitation-title">Приглашение</div>
+      <h1 class="main-headline">
+        Хылбык дой
+        <small>праздник первой стрижки</small>
+      </h1>
+
+      <div class="divider"></div>
+
+      <!-- Имя мальчика -->
+      <div class="honoree">Маннык Алдар</div>
+      <div class="honoree-sub">Наш дорогой сын</div>
+
+      <!-- Детали -->
+      <div class="event-details">
+        <div class="detail-row">
+          <span class="emoji">??</span>
+          <span class="label">Дата:</span>
+          <span class="value"><strong>16 августа</strong> 2026</span>
+        </div>
+        <div class="detail-row">
+          <span class="emoji">?</span>
+          <span class="label">Время:</span>
+          <span class="value"><strong>16:00</strong></span>
+        </div>
+        <div class="detail-row" style="flex-direction: column; gap: 6px; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center;">
+            <span class="emoji">??</span>
+            <span class="label">Место:</span>
+          </div>
+          <div class="address-line">
+            <span class="emoji">???</span>
+            <span>г. Кызыл, ул. Комсомольская 56</span>
+          </div>
+          <div class="address-line" style="border-style: solid; background: rgba(245, 235, 220, 0.5);">
+            <span class="emoji">?</span>
+            <span><strong>кафе «Династия»</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Кнопка подтверждения -->
+      <button class="rsvp-btn" id="rsvpButton">? Буду с радостью</button>
+
+      <!-- дополнительная информация -->
+      <div class="footer-note">
+        <span>Ждём вас!</span>
+        <span class="heart">¦</span>
+        <span>Будет тепло и уютно</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const rsvpBtn = document.getElementById('rsvpButton');
+
+      // эффект "нажатия" и обратная связь
+      rsvpBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // меняем текст и стиль кнопки
+        const originalText = this.textContent;
+        this.textContent = '? Спасибо! Ждём вас!';
+        this.style.background = '#8baa8c';
+        this.style.boxShadow = '0 4px 14px rgba(100, 130, 90, 0.3)';
+
+        // небольшой "тултип" через алерт (или можно кастомный, но для простоты — алерт)
+        // но чтобы не было навязчиво, сделаем лёгкое уведомление
+        // покажем всплывающее сообщение в стиле "тост"
+        const toast = document.createElement('div');
+        toast.textContent = '?? Вы подтвердили участие!';
+        toast.style.position = 'fixed';
+        toast.style.bottom = '30px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.background = 'rgba(60, 45, 35, 0.88)';
+        toast.style.backdropFilter = 'blur(8px)';
+        toast.style.color = '#f5ede5';
+        toast.style.padding = '14px 28px';
+        toast.style.borderRadius = '60px';
+        toast.style.fontSize = '1rem';
+        toast.style.fontWeight = '400';
+        toast.style.letterSpacing = '1px';
+        toast.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
+        toast.style.border = '1px solid rgba(255,215,180,0.2)';
+        toast.style.zIndex = '999';
+        toast.style.transition = 'opacity 0.3s ease';
+        toast.style.opacity = '0';
+        document.body.appendChild(toast);
+
+        // анимация появления
+        setTimeout(() => { toast.style.opacity = '1'; }, 20);
+
+        // через 4 секунды убираем
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          setTimeout(() => {
+            if (toast.parentNode) toast.remove();
+          }, 400);
+        }, 4000);
+
+        // возвращаем кнопку через 5 секунд (но оставляем "спасибо" подольше)
+        setTimeout(() => {
+          this.textContent = '? Буду с радостью';
+          this.style.background = '#b48a6c';
+          this.style.boxShadow = '0 6px 18px rgba(150, 110, 80, 0.25)';
+        }, 5000);
+      });
+
+      // дополнительный эффект: при наведении лёгкое свечение
+      rsvpBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.02)';
+      });
+      rsvpBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    })();
+  </script>
+</body>
+</html>
