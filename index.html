@@ -1,0 +1,628 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на Хылбык-дой — Маннык Алдар</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap');
+
+        :root {
+            --sky-blue: #D2E4F2;
+            --deep-blue: #1C4066;
+            --gold-accent: #C5A059;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: url('background.jpg') no-repeat center top fixed;
+            background-size: cover;
+            color: var(--deep-blue);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Основная карточка */
+        .wrapper {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 10px 40px rgba(28, 64, 102, 0.05);
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: initLoad 1.5s cubic-bezier(0.1, 1, 0.1, 1) forwards;
+            margin: 0 auto;
+        }
+
+        @keyframes initLoad {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            padding: 50px 25px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px dashed rgba(28, 64, 102, 0.1);
+        }
+
+        /* --- СТИКЕРЫ (Настройки позиционирования) --- */
+        .scroll-sticker {
+            position: absolute;
+            z-index: 3;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        /* 1. Первая машинка (у главного фото) — стартует слева за экраном */
+        #sticker-baby-car {
+            width: 75px;
+            left: -100px;
+            top: 280px;
+        }
+
+        /* 2. Шарики под календарем, центрированы */
+        #sticker-balloons-2 {
+            width: 120px;
+            position: absolute;
+            z-index: -1;
+            left: 50%;
+            top: 55%;
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+        }
+
+        /* 3. Конь-качалка */
+        #sticker-horse {
+            width: 80px;
+            left: -20px;
+            top: 1180px;
+            animation: rockHorse 2s ease-in-out infinite alternate;
+            transform-origin: bottom center;
+        }
+
+        @keyframes rockHorse {
+            0% { transform: rotate(-8deg); }
+            100% { transform: rotate(8deg); }
+        }
+
+        /* 4. Вторая машинка (желтая классическая) — стартует ровно слева за экраном */
+        #sticker-classic-car {
+            width: 90px;
+            left: -100px;
+            top: 1550px;
+        }
+
+        /* 5. Тортик и вторые шарики */
+        #sticker-cake {
+            width: 75px;
+            left: -15px;
+            top: 2000px;
+        }
+
+        #sticker-balloons-1 {
+            width: 75px;
+            right: -15px;
+            top: 2350px;
+        }
+
+        /* Корректировка для мобильных */
+        @media (max-width: 520px) {
+            #sticker-horse { left: 5px; }
+            #sticker-cake { left: 5px; }
+            #sticker-balloons-1 { right: 5px; }
+        }
+
+        /* --- СТИЛИ КОНТЕНТА --- */
+        .handwritten-title {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        
+        .hero-date {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .ornament-circle-bg {
+            width: 100%;
+            max-width: 300px;
+            margin: 30px auto;
+            border: 3px double rgba(28, 64, 102, 0.25);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .main-baby-photo {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            border-radius: 12px;
+            object-fit: cover;
+            object-position: center 5%; 
+            border: 2px solid var(--white);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .poem-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 600;
+            color: var(--deep-blue);
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 25px 0 10px 0;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .family-photo-box {
+            width: 100%;
+            height: 340px;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 3px solid var(--white);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            margin: 25px 0;
+        }
+        
+        .family-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+        }
+
+        .calendar-header-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr;
+            align-items: center;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 25px 0;
+            border-bottom: 2px solid var(--deep-blue);
+            padding-bottom: 10px;
+        }
+        
+        .calendar-week {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            font-weight: 600;
+            margin-bottom: 10px;
+            opacity: 0.6;
+        }
+        
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            font-weight: 600;
+            font-size: 1.1rem;
+            row-gap: 8px;
+        }
+        
+        .day-active {
+            color: var(--white);
+            background: #D45D5D;
+            border-radius: 50%;
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            line-height: 34px;
+            margin: 0 auto;
+        }
+
+        .address-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .time-display {
+            font-size: 3rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--deep-blue);
+            display: inline-block;
+            padding: 0 20px;
+            margin-top: 15px;
+        }
+
+        #countdown-timer {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            letter-spacing: 1px;
+        }
+        
+        .btn-map {
+            display: inline-block;
+            border: 2px solid var(--deep-blue);
+            border-radius: 25px;
+            padding: 10px 40px;
+            color: var(--deep-blue);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        
+        .btn-map:hover {
+            background: var(--deep-blue);
+            color: white;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(28, 64, 102, 0.2);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .radio-option input {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--deep-blue);
+        }
+        
+        .btn-submit {
+            width: 100%;
+            background: #AEC6CF;
+            color: var(--deep-blue);
+            border: none;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background: var(--deep-blue);
+            color: white;
+        }
+        
+        .footer-note {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            opacity: 0.9;
+        }
+
+        .audio-container {
+            margin: 25px 0 10px 0;
+        }
+        audio {
+            max-width: 100%;
+            height: 36px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="section">
+            <div class="section-label">Чалалга</div>
+            <h1 class="hero-title">Хылбык-дой</h1>
+            <div class="hero-date">Август | 16 | 2026</div>
+            
+            <div class="ornament-circle-bg">
+                <img src="main.jpg" alt="Маннык Алдар" class="main-baby-photo">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="handwritten-title" style="font-size: 3.2rem;">Хүндүлүг аалчыларывыс!</h2>
+            
+            <div class="poem-text">
+                Чаштың чажын хылбыктаары,<br>
+                Чаагай чаңчыл ёзулалче силерни<br>
+                Бистиң чаптанчыг, эрес-дидим,<br>
+                Орлан-шоваа<br>
+                Оглувус <strong>Алдарның</strong><br>
+                Хылбык-дойунче чалап тур бис!<br>
+                <br>
+                Аяк-шайдан аартап ижип,<br>
+                Аян ырдан ырлап тура,<br>
+                Аас-кежии, чуртталгазы<br>
+                Аайлажып чорзун дээштиң,<br>
+                Алгап-мактап,<br>
+                йорээл салык байырлаалы!
+            </div>
+
+            <div class="photo-gallery">
+                <img src="photo1.jpg" alt="Алдар" class="gallery-img">
+                <img src="photo2.jpg" alt="Алдар" class="gallery-img">
+                <img src="photo3.jpg" alt="Алдар" class="gallery-img">
+            </div>
+        </div>
+
+        <div class="section" style="position: relative; z-index: 1;">
+            <img src="free-sticker-balloon-6225382.png" id="sticker-balloons-2" alt="balloon">
+            
+            <h2 class="handwritten-title">Кажан болуру:</h2>
+            <div class="calendar-header-grid">
+                <div>Август</div>
+                <div>16</div>
+                <div>2026 год</div>
+            </div>
+            <div class="calendar-week">
+                <div>П</div><div>В</div><div>С</div><div>Ч</div><div>П</div><div>С</div><div>В</div>
+            </div>
+            <div class="calendar-days">
+                <div></div><div></div><div></div><div></div><div></div><div>1</div><div>2</div>
+                <div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div>
+                <div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
+                <div><span class="day-active">16</span></div>
+                <div>17</div><div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div>
+                <div>24</div><div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div>
+                <div>31</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="handwritten-title">Болур чери:</h2>
+            <p class="address-text">
+                г. Кызыл, ул. Комсомольская 56,<br>
+                <strong>кафе «Династия»</strong>
+            </p>
+            
+            <a href="https://yandex.ru/maps/?text=Кызыл+Комсомольская+56+кафе+Династия" target="_blank" class="btn-map">КАРТА</a>
+            
+            <div>
+                <div class="section-label" style="margin-top:15px;">Эгелээр шагы</div>
+                <div class="time-display">14:00</div>
+                <div id="countdown-timer">До начала осталось: --:--:--</div>
+            </div>
+        </div>
+
+        <div class="section" style="border-bottom: none;">
+            <div class="family-photo-box">
+                <img src="family.jpg" alt="Наша семья" class="family-img">
+            </div>
+
+            <h2 class="handwritten-title" style="font-size: 2.8rem; margin-bottom: 25px;">Анкета гостя</h2>
+            
+            <form class="form-container" id="tgForm">
+                <div class="form-group">
+                    <label>Ваше имя и фамилия</label>
+                    <input type="text" id="guestName" class="form-input" placeholder="Введите имя" required>
+                </div>
+
+                <div class="form-group">
+                    <label>С кем вы будете / придёте? (Имена гостей)</label>
+                    <input type="text" id="guestCompany" class="form-input" placeholder="Например: муж, дети Аяна и Саян">
+                </div>
+
+                <div class="form-group">
+                    <label>Сможете ли вы присутствовать?</label>
+                    <div style="margin-top: 10px;">
+                        <label class="radio-option">
+                            <input type="radio" name="attendance" value="Да, с удовольствием приду / придем" checked>
+                            Да, с удовольствием приду / придем
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="attendance" value="К сожалению, не смогу прийти">
+                            К сожалению, не смогу прийти
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">Отправить ответ</button>
+            </form>
+
+            <div class="audio-container">
+                <audio id="myAudio" controls loop autoplay>
+                    <source src="music.mp3" type="audio/mpeg">
+                    Ваш браузер не поддерживает музыку.
+                </audio>
+            </div>
+
+            <div class="footer-note">С уважением и любовью! Семья Маннык</div>
+        </div>
+
+        <img src="free-sticker-baby-car-6347184.png" id="sticker-baby-car" class="scroll-sticker" alt="baby-car">
+        <img src="free-sticker-horse-toy-6347082.png" id="sticker-horse" class="scroll-sticker" alt="horse">
+        <img src="free-sticker-classic-car-5965410.png" id="sticker-classic-car" class="scroll-sticker" alt="classic-car">
+        <img src="free-sticker-cake-8692908.png" id="sticker-cake" class="scroll-sticker" alt="cake">
+        <img src="free-sticker-ballons-6347121.png" id="sticker-balloons-1" class="scroll-sticker" alt="balloons">
+
+    </div>
+
+<script>
+// 1. НАДЕЖНЫЙ СИНТАКСИС ТАЙМЕРА ДО 16 АВГУСТА 2026 14:00
+const countDownDate = new Date("Aug 16, 2026 14:00:00").getTime();
+
+setInterval(function() {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+
+    if (distance < 0) {
+        document.getElementById("countdown-timer").innerHTML = "Праздник начался!";
+        return;
+    }
+
+    const d = Math.floor(distance / 86400000);
+    const h = Math.floor((distance % 86400000) / 3600000);
+    const m = Math.floor((distance % 3600000) / 60000);
+    const s = Math.floor((distance % 60000) / 1000);
+
+    document.getElementById("countdown-timer").innerHTML = 
+        `До начала осталось: ${d}д ${h}ч ${m}м ${s}с`;
+}, 1000);
+
+// 2. ИСПРАВЛЕННАЯ АНИМАЦИЯ СКРОЛЛА
+window.addEventListener('scroll', function() {
+    const value = window.scrollY;
+
+    const babyCar = document.getElementById('sticker-baby-car');
+    const classicCar = document.getElementById('sticker-classic-car');
+    const balloons1 = document.getElementById('sticker-balloons-1');
+    const balloons2 = document.getElementById('sticker-balloons-2');
+    const cake = document.getElementById('sticker-cake');
+
+    // ОБЕ МАШИНКИ СТАРТУЮТ СЛЕВА И ДВИГАЮТСЯ НАПРАВО
+    if(babyCar) babyCar.style.transform = `translateX(${value * 0.7}px)`;
+    if(classicCar) classicCar.style.transform = `translateX(${value * 0.7}px)`;
+
+    // Воздушные шары улетают строго ВВЕРХ
+    if(balloons1) balloons1.style.transform = `translateY(${-value * 0.4}px)`;
+    if(balloons2) balloons2.style.transform = `translateY(${-value * 0.25}px)`;
+
+    // Тортик плавно смещается по вертикали
+    if(cake) cake.style.transform = `translateY(${-value * 0.1}px) rotate(${value * 0.03}deg)`;
+});
+
+// 3. ОТПРАВКА ДАННЫХ В GOOGLE ТАБЛИЦУ (Твоя ссылка интегрирована)
+document.getElementById('tgForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbysaI-NaQuFj6rSycLpYd2IM_sRNJO5Jb9cFI9dP7feEWjIrFCXCiCRI8xzUDAdgX02QA/exec';
+
+    const name = document.getElementById('guestName').value;
+    const company = document.getElementById('guestCompany').value || 'Придёт один/одна';
+    const attendance = document.querySelector('input[name="attendance"]:checked').value;
+
+    const button = document.getElementById('submitBtn');
+    button.disabled = true;
+    button.innerText = 'Отправка...';
+
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, company: company, attendance: attendance })
+    })
+    .then(() => {
+        alert('Спасибо! Ваш ответ успешно записан в таблицу.');
+        document.getElementById('tgForm').reset();
+    })
+    .catch((err) => {
+        alert('Ошибка сети при отправке в таблицу.');
+        console.error(err);
+    })
+    .finally(() => {
+        button.disabled = false;
+        button.innerText = 'Отправить ответ';
+    });
+});
+
+// 4. НАДЕЖНЫЙ ОБХОД БЛОКИРОВКИ АВТОПЛЕЯ ДЛЯ МОБИЛЬНЫХ И ПК
+function startAudio() {
+    const audio = document.getElementById('myAudio');
+    if (audio) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+            const context = new AudioContext();
+            if (context.state === 'suspended') {
+                context.resume();
+            }
+        }
+        
+        audio.play()
+        .then(() => {
+            removeAudioListeners();
+        })
+        .catch(function(error) {
+            console.log("Ожидание взаимодействия для запуска звука...");
+        });
+    }
+}
+
+function removeAudioListeners() {
+    document.removeEventListener('click', startAudio);
+    document.removeEventListener('touchstart', startAudio);
+    window.removeEventListener('scroll', startAudio);
+}
+
+document.addEventListener('click', startAudio);
+document.addEventListener('touchstart', startAudio);
+window.addEventListener('scroll', startAudio);
+</script>
+</body>
+</html>
