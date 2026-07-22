@@ -122,15 +122,6 @@
             will-change: transform;
         }
 
-        .sticker-car-below-photo {
-            position: relative;
-            width: 85px;
-            margin-top: 15px;
-            z-index: 5;
-            pointer-events: none;
-            will-change: transform;
-        }
-
         #sticker-balloons-2 {
             width: 120px;
             position: absolute;
@@ -141,17 +132,21 @@
             opacity: 0.6;
         }
 
+        /* Стикер лошадки рядом с 14:00 */
         #sticker-horse {
-            width: 80px;
-            left: -20px;
-            top: 1180px;
+            width: 65px;
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
             animation: rockHorse 2s ease-in-out infinite alternate;
             transform-origin: bottom center;
+            pointer-events: none;
         }
 
         @keyframes rockHorse {
-            0% { transform: rotate(-8deg); }
-            100% { transform: rotate(8deg); }
+            0% { transform: translateY(-50%) rotate(-8deg); }
+            100% { transform: translateY(-50%) rotate(8deg); }
         }
 
         #sticker-classic-car {
@@ -173,7 +168,6 @@
         }
 
         @media (max-width: 520px) {
-            #sticker-horse { left: 5px; }
             #sticker-cake { left: 5px; }
             #sticker-balloons-1 { right: 5px; }
         }
@@ -454,8 +448,6 @@
                     <img src="main.jpg" alt="Маннык Алдар" class="main-baby-photo">
                 </div>
             </div>
-            <!-- Стикер машинки под фото -->
-            <img src="free-sticker-baby-car-6347184.png" id="sticker-baby-car" class="sticker-car-below-photo" alt="baby-car">
         </div>
 
         <!-- БЛОК 2: Текст и ФОТКИ ПОСЛЕ СТИХА (photo1, photo2, photo3) -->
@@ -519,10 +511,13 @@
             
             <a href="https://yandex.ru/maps/?text=Кызыл+ул+Титова+5+ресторан+Эне-Сай" target="_blank" class="btn-map">КАРТА</a>
             
-            <div>
+            <div style="position: relative;">
                 <div class="section-label" style="margin-top:15px;">Эгелээр шагы</div>
                 <div class="time-display">14:00</div>
                 <div id="countdown-timer">До начала осталось: --:--:--</div>
+                
+                <!-- Стикер лошадки рядом с 14:00 -->
+                <img src="free-sticker-horse-toy-6347082.png" id="sticker-horse" alt="horse">
             </div>
 
             <!-- Галерея ph1, ph2, ph3 после отсчета времени -->
@@ -581,7 +576,6 @@
         </div>
 
         <!-- СТИКЕРЫ -->
-        <img src="free-sticker-horse-toy-6347082.png" id="sticker-horse" class="scroll-sticker" alt="horse">
         <img src="free-sticker-classic-car-5965410.png" id="sticker-classic-car" class="scroll-sticker" alt="classic-car">
         <img src="free-sticker-cake-8692908.png" id="sticker-cake" class="scroll-sticker" alt="cake">
         <img src="free-sticker-ballons-6347121.png" id="sticker-balloons-1" class="scroll-sticker" alt="balloons">
@@ -612,19 +606,14 @@ setInterval(function() {
 window.addEventListener('scroll', function() {
     const value = window.scrollY;
 
-    const babyCar = document.getElementById('sticker-baby-car');
     const classicCar = document.getElementById('sticker-classic-car');
     const balloons1 = document.getElementById('sticker-balloons-1');
     const balloons2 = document.getElementById('sticker-balloons-2');
     const cake = document.getElementById('sticker-cake');
 
-    // Машинка едет влево при скролле вниз
-    if(babyCar) babyCar.style.transform = `translateX(${-value * 0.15}px)`;
     if(classicCar) classicCar.style.transform = `translateX(${value * 0.7}px)`;
-
     if(balloons1) balloons1.style.transform = `translateY(${-value * 0.4}px)`;
     if(balloons2) balloons2.style.transform = `translateY(${-value * 0.25}px)`;
-
     if(cake) cake.style.transform = `translateY(${-value * 0.1}px) rotate(${value * 0.03}deg)`;
 });
 
