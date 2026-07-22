@@ -618,7 +618,8 @@ window.addEventListener('scroll', function() {
     const balloons2 = document.getElementById('sticker-balloons-2');
     const cake = document.getElementById('sticker-cake');
 
-    if(babyCar) babyCar.style.transform = `translateX(${value * 0.15}px)`;
+    // Машинка едет влево при скролле вниз
+    if(babyCar) babyCar.style.transform = `translateX(${-value * 0.15}px)`;
     if(classicCar) classicCar.style.transform = `translateX(${value * 0.7}px)`;
 
     if(balloons1) balloons1.style.transform = `translateY(${-value * 0.4}px)`;
