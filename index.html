@@ -122,6 +122,15 @@
             will-change: transform;
         }
 
+        /* Стикер машинки под главным фото (стоит на месте) */
+        .sticker-car-below-photo {
+            position: relative;
+            width: 85px;
+            margin-top: 15px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
         #sticker-balloons-2 {
             width: 120px;
             position: absolute;
@@ -147,12 +156,6 @@
         @keyframes rockHorse {
             0% { transform: translateY(-50%) rotate(-8deg); }
             100% { transform: translateY(-50%) rotate(8deg); }
-        }
-
-        #sticker-classic-car {
-            width: 90px;
-            left: -100px;
-            top: 1550px;
         }
 
         #sticker-cake {
@@ -448,6 +451,8 @@
                     <img src="main.jpg" alt="Маннык Алдар" class="main-baby-photo">
                 </div>
             </div>
+            <!-- Стикер машинки под первым фото -->
+            <img src="free-sticker-baby-car-6347184.png" id="sticker-baby-car" class="sticker-car-below-photo" alt="baby-car">
         </div>
 
         <!-- БЛОК 2: Текст и ФОТКИ ПОСЛЕ СТИХА (photo1, photo2, photo3) -->
@@ -576,7 +581,6 @@
         </div>
 
         <!-- СТИКЕРЫ -->
-        <img src="free-sticker-classic-car-5965410.png" id="sticker-classic-car" class="scroll-sticker" alt="classic-car">
         <img src="free-sticker-cake-8692908.png" id="sticker-cake" class="scroll-sticker" alt="cake">
         <img src="free-sticker-ballons-6347121.png" id="sticker-balloons-1" class="scroll-sticker" alt="balloons">
 
@@ -606,12 +610,10 @@ setInterval(function() {
 window.addEventListener('scroll', function() {
     const value = window.scrollY;
 
-    const classicCar = document.getElementById('sticker-classic-car');
     const balloons1 = document.getElementById('sticker-balloons-1');
     const balloons2 = document.getElementById('sticker-balloons-2');
     const cake = document.getElementById('sticker-cake');
 
-    if(classicCar) classicCar.style.transform = `translateX(${value * 0.7}px)`;
     if(balloons1) balloons1.style.transform = `translateY(${-value * 0.4}px)`;
     if(balloons2) balloons2.style.transform = `translateY(${-value * 0.25}px)`;
     if(cake) cake.style.transform = `translateY(${-value * 0.1}px) rotate(${value * 0.03}deg)`;
