@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -125,10 +125,11 @@
             will-change: transform;
         }
 
+        /* Позиционирование машинки под главным фото сына */
         #sticker-baby-car {
-            width: 75px;
-            left: -100px;
-            top: 280px;
+            width: 80px;
+            left: 20px;
+            top: 480px;
         }
 
         #sticker-balloons-2 {
@@ -454,6 +455,9 @@
             <div class="ornament-circle-bg">
                 <img src="main.jpg" alt="Маннык Алдар" class="main-baby-photo">
             </div>
+
+            <!-- Машинка под заглавной фоткой -->
+            <img src="free-sticker-baby-car-6347184.png" id="sticker-baby-car" class="scroll-sticker" alt="baby-car">
         </div>
 
         <!-- БЛОК 2: Текст и галерея -->
@@ -524,10 +528,14 @@
             </div>
         </div>
 
-        <!-- БЛОК 5: Семейное фото, Анкета и Музыка -->
+        <!-- БЛОК 5: Галерея сына, Анкета, Семейное фото и Музыка -->
         <div class="section" style="border-bottom: none;">
-            <div class="family-photo-box">
-                <img src="family.jpg" alt="Наша семья" class="family-img">
+            
+            <!-- Вместо старого фото поставили 3 фотографии сына -->
+            <div class="photo-gallery" style="margin-bottom: 30px;">
+                <img src="son1.jpg" alt="Алдар" class="gallery-img" style="height: 160px;">
+                <img src="son2.jpg" alt="Алдар" class="gallery-img" style="height: 160px;">
+                <img src="son3.jpg" alt="Алдар" class="gallery-img" style="height: 160px;">
             </div>
 
             <h2 class="handwritten-title" style="font-size: 2.8rem; margin-bottom: 25px;">Анкета гостя</h2>
@@ -560,6 +568,11 @@
                 <button type="submit" class="btn-submit" id="submitBtn">Отправить ответ</button>
             </form>
 
+            <!-- Семейное фото перенесено ПОСЛЕ анкеты -->
+            <div class="family-photo-box" style="margin-top: 35px;">
+                <img src="family.jpg" alt="Наша семья" class="family-img">
+            </div>
+
             <div class="audio-container">
                 <audio id="myAudio" controls loop>
                     <source src="music.mp3" type="audio/mpeg">
@@ -570,8 +583,7 @@
             <div class="footer-note">С уважением и любовью! Семья Маннык</div>
         </div>
 
-        <!-- СТИКЕРЫ -->
-        <img src="free-sticker-baby-car-6347184.png" id="sticker-baby-car" class="scroll-sticker" alt="baby-car">
+        <!-- ОСТАЛЬНЫЕ СТИКЕРЫ -->
         <img src="free-sticker-horse-toy-6347082.png" id="sticker-horse" class="scroll-sticker" alt="horse">
         <img src="free-sticker-classic-car-5965410.png" id="sticker-classic-car" class="scroll-sticker" alt="classic-car">
         <img src="free-sticker-cake-8692908.png" id="sticker-cake" class="scroll-sticker" alt="cake">
@@ -611,7 +623,7 @@ window.addEventListener('scroll', function() {
     const balloons2 = document.getElementById('sticker-balloons-2');
     const cake = document.getElementById('sticker-cake');
 
-    if(babyCar) babyCar.style.transform = `translateX(${value * 0.7}px)`;
+    if(babyCar) babyCar.style.transform = `translateX(${value * 0.15}px)`;
     if(classicCar) classicCar.style.transform = `translateX(${value * 0.7}px)`;
 
     if(balloons1) balloons1.style.transform = `translateY(${-value * 0.4}px)`;
