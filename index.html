@@ -32,7 +32,6 @@
             overflow-x: hidden;
         }
 
-        /* Стильное стартовое окно для обхода блокировки звука */
         .welcome-overlay {
             position: fixed;
             top: 0;
@@ -90,7 +89,6 @@
             visibility: hidden;
         }
 
-        /* Основная карточка */
         .wrapper {
             width: 100%;
             max-width: 480px;
@@ -117,7 +115,6 @@
             border-bottom: 1px dashed rgba(28, 64, 102, 0.1);
         }
 
-        /* --- СТИКЕРЫ --- */
         .scroll-sticker {
             position: absolute;
             z-index: 3;
@@ -125,11 +122,14 @@
             will-change: transform;
         }
 
-        /* Позиционирование машинки под главным фото сына */
-        #sticker-baby-car {
-            width: 80px;
-            left: 20px;
-            top: 480px;
+        .sticker-car-under-photo {
+            position: absolute;
+            width: 85px;
+            left: -10px;
+            bottom: 10px;
+            z-index: 5;
+            pointer-events: none;
+            will-change: transform;
         }
 
         #sticker-balloons-2 {
@@ -179,7 +179,6 @@
             #sticker-balloons-1 { right: 5px; }
         }
 
-        /* --- СТИЛИ КОНТЕНТА --- */
         .handwritten-title {
             font-family: 'Caveat', cursive;
             font-size: 3.5rem;
@@ -213,7 +212,7 @@
         .ornament-circle-bg {
             width: 100%;
             max-width: 300px;
-            margin: 30px auto;
+            margin: 30px auto 10px auto;
             border: 3px double rgba(28, 64, 102, 0.25);
             border-radius: 16px;
             display: flex;
@@ -229,7 +228,7 @@
             aspect-ratio: 4 / 5;
             border-radius: 12px;
             object-fit: cover;
-            object-position: center 5%; 
+            object-position: center 15%; 
             border: 2px solid var(--white);
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
@@ -243,16 +242,16 @@
             text-align: center;
         }
 
-        .photo-gallery {
+        .photo-gallery-2 {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
             margin: 25px 0 10px 0;
         }
         
         .gallery-img {
             width: 100%;
-            height: 140px;
+            height: 180px;
             object-fit: cover;
             border-radius: 12px;
             border: 2px solid var(--white);
@@ -437,7 +436,6 @@
 </head>
 <body>
 
-    <!-- СТАРТОВОЕ ОКНО -->
     <div class="welcome-overlay" id="welcomeOverlay">
         <h1 class="welcome-title">Хылбык-дой</h1>
         <p class="welcome-subtitle">Маннык Алдар</p>
@@ -446,21 +444,21 @@
 
     <div class="wrapper">
 
-        <!-- БЛОК 1: Главная -->
-        <div class="section">
+        <!-- БЛОК 1: Главная (фото ph3.jpg в кепке + машинка под ним) -->
+        <div class="section" style="padding-bottom: 30px;">
             <div class="section-label">Чалалга</div>
             <h1 class="hero-title">Хылбык-дой</h1>
             <div class="hero-date">Август | 16 | 2026</div>
             
-            <div class="ornament-circle-bg">
-                <img src="main.jpg" alt="Маннык Алдар" class="main-baby-photo">
+            <div style="position: relative; width: 100%; max-width: 300px; margin: 0 auto;">
+                <div class="ornament-circle-bg">
+                    <img src="ph3.jpg" alt="Маннык Алдар" class="main-baby-photo">
+                </div>
+                <img src="free-sticker-baby-car-6347184.png" id="sticker-baby-car" class="sticker-car-under-photo" alt="baby-car">
             </div>
-
-            <!-- Машинка под заглавной фоткой -->
-            <img src="free-sticker-baby-car-6347184.png" id="sticker-baby-car" class="scroll-sticker" alt="baby-car">
         </div>
 
-        <!-- БЛОК 2: Текст и галерея -->
+        <!-- БЛОК 2: Текст и 2 фотографии ph1.jpg, ph2.jpg -->
         <div class="section">
             <h2 class="handwritten-title" style="font-size: 3.2rem;">Хүндүлүг аалчыларывыс!</h2>
             
@@ -480,10 +478,9 @@
                 йорээл салык байырлаалы!
             </div>
 
-            <div class="photo-gallery">
-                <img src="photo1.jpg" alt="Алдар" class="gallery-img">
-                <img src="photo2.jpg" alt="Алдар" class="gallery-img">
-                <img src="photo3.jpg" alt="Алдар" class="gallery-img">
+            <div class="photo-gallery-2">
+                <img src="ph1.jpg" alt="Алдар" class="gallery-img">
+                <img src="ph2.jpg" alt="Алдар" class="gallery-img">
             </div>
         </div>
 
@@ -528,16 +525,9 @@
             </div>
         </div>
 
-        <!-- БЛОК 5: Галерея сына, Анкета, Семейное фото и Музыка -->
+        <!-- БЛОК 5: Анкета и Семейное фото (family.jpg) -->
         <div class="section" style="border-bottom: none;">
             
-            <!-- Вместо старого фото поставили 3 фотографии сына -->
-            <div class="photo-gallery" style="margin-bottom: 30px;">
-                <img src="son1.jpg" alt="Алдар" class="gallery-img" style="height: 160px;">
-                <img src="son2.jpg" alt="Алдар" class="gallery-img" style="height: 160px;">
-                <img src="son3.jpg" alt="Алдар" class="gallery-img" style="height: 160px;">
-            </div>
-
             <h2 class="handwritten-title" style="font-size: 2.8rem; margin-bottom: 25px;">Анкета гостя</h2>
             
             <form class="form-container" id="tgForm">
@@ -568,7 +558,7 @@
                 <button type="submit" class="btn-submit" id="submitBtn">Отправить ответ</button>
             </form>
 
-            <!-- Семейное фото перенесено ПОСЛЕ анкеты -->
+            <!-- Семейное фото ПОСЛЕ анкеты -->
             <div class="family-photo-box" style="margin-top: 35px;">
                 <img src="family.jpg" alt="Наша семья" class="family-img">
             </div>
@@ -583,7 +573,7 @@
             <div class="footer-note">С уважением и любовью! Семья Маннык</div>
         </div>
 
-        <!-- ОСТАЛЬНЫЕ СТИКЕРЫ -->
+        <!-- СТИКЕРЫ -->
         <img src="free-sticker-horse-toy-6347082.png" id="sticker-horse" class="scroll-sticker" alt="horse">
         <img src="free-sticker-classic-car-5965410.png" id="sticker-classic-car" class="scroll-sticker" alt="classic-car">
         <img src="free-sticker-cake-8692908.png" id="sticker-cake" class="scroll-sticker" alt="cake">
@@ -592,7 +582,6 @@
     </div>
 
 <script>
-// 1. ТАЙМЕР ДО 16 АВГУСТА 2026 14:00
 const countDownDate = new Date("Aug 16, 2026 14:00:00").getTime();
 
 setInterval(function() {
@@ -613,7 +602,6 @@ setInterval(function() {
         `До начала осталось: ${d}д ${h}ч ${m}м ${s}с`;
 }, 1000);
 
-// 2. АНИМАЦИЯ СКРОЛЛА
 window.addEventListener('scroll', function() {
     const value = window.scrollY;
 
@@ -623,7 +611,7 @@ window.addEventListener('scroll', function() {
     const balloons2 = document.getElementById('sticker-balloons-2');
     const cake = document.getElementById('sticker-cake');
 
-    if(babyCar) babyCar.style.transform = `translateX(${value * 0.15}px)`;
+    if(babyCar) babyCar.style.transform = `translateX(${value * 0.1}px)`;
     if(classicCar) classicCar.style.transform = `translateX(${value * 0.7}px)`;
 
     if(balloons1) balloons1.style.transform = `translateY(${-value * 0.4}px)`;
@@ -632,7 +620,6 @@ window.addEventListener('scroll', function() {
     if(cake) cake.style.transform = `translateY(${-value * 0.1}px) rotate(${value * 0.03}deg)`;
 });
 
-// 3. ОТПРАВКА ДАННЫХ В GOOGLE ТАБЛИЦУ
 document.getElementById('tgForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -666,7 +653,6 @@ document.getElementById('tgForm').addEventListener('submit', function(e) {
     });
 });
 
-// 4. ФУНКЦИЯ КЛИКА НА СТАРТОВОЕ ОКНО И ЗАПУСКА ЗВУКА
 function openInvitation() {
     const overlay = document.getElementById('welcomeOverlay');
     if (overlay) {
