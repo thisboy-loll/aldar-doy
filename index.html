@@ -122,11 +122,10 @@
             will-change: transform;
         }
 
-        .sticker-car-under-photo {
-            position: absolute;
+        .sticker-car-below-photo {
+            position: relative;
             width: 85px;
-            left: -10px;
-            bottom: 10px;
+            margin-top: 15px;
             z-index: 5;
             pointer-events: none;
             will-change: transform;
@@ -454,8 +453,9 @@
                 <div class="ornament-circle-bg">
                     <img src="main.jpg" alt="Маннык Алдар" class="main-baby-photo">
                 </div>
-                <img src="free-sticker-baby-car-6347184.png" id="sticker-baby-car" class="sticker-car-under-photo" alt="baby-car">
             </div>
+            <!-- Стикер машинки под фото -->
+            <img src="free-sticker-baby-car-6347184.png" id="sticker-baby-car" class="sticker-car-below-photo" alt="baby-car">
         </div>
 
         <!-- БЛОК 2: Текст и ФОТКИ ПОСЛЕ СТИХА (photo1, photo2, photo3) -->
@@ -618,7 +618,7 @@ window.addEventListener('scroll', function() {
     const balloons2 = document.getElementById('sticker-balloons-2');
     const cake = document.getElementById('sticker-cake');
 
-    if(babyCar) babyCar.style.transform = `translateX(${value * 0.1}px)`;
+    if(babyCar) babyCar.style.transform = `translateX(${value * 0.15}px)`;
     if(classicCar) classicCar.style.transform = `translateX(${value * 0.7}px)`;
 
     if(balloons1) balloons1.style.transform = `translateY(${-value * 0.4}px)`;
